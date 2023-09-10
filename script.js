@@ -1,5 +1,3 @@
-//your code here
-
 // Suppose an array that contains a list of band names
 let bandNames = ['The Beatles', 'Led Zeppelin', 'The Rolling Stones', 'Queen', 'Aerosmith'];
 
