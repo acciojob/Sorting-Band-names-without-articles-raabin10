@@ -4,18 +4,21 @@ let touristSpots = ['The Virupaksha Temple', 'Victoria Memorial', 'Tajmahal'];
 function removeArticles(name) {
   // Regular expression to match articles at the beginning of the string
   const articleRegex = /^(a|an|the)\s+/i;
-  return name.replace(articleRegex, ''); // Replace matched articles with an empty string
+  return name.replace(articleRegex, '').trim(); // Replace matched articles with an empty string
 }
 
 // Sort the band names in lexicographic order (excluding articles)
-   touristSpotsNames.sort((a, b) => removeArticles(a).localeCompare(removeArticles(b)));
+   touristSpots.sort((a, b) => removeArticles(a).localeCompare(removeArticles(b)));
 
-// Get the ul element with id 'band'
-const touristSpots = document.getElementById('tourist');
+const ul = document.createElement('ul');
+ul.id = 'band';
 
-// Create li elements and append them to the ul element
-for (let i = 0; i < touristSpots.length; i++) {
-  const listItem = document.createElement('li');
-  listItem.textContent =  touristSpotsNames[i];
- touristSpots.appendChild(listItem);
-}
+// Iterate through the sorted band names and create li elements
+touristSpots.forEach((touristSpot) => {
+  const li = document.createElement('li');
+  li.textContent = touristSpot;
+  ul.appendChild(li);
+});
+
+// Add the ul to the document's body
+document.body.appendChild(ul);
